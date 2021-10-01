@@ -2,14 +2,15 @@ const notas = []
 
 function adicionarNota () {
   var inputNotas = parseInt(document.getElementById("notas").value)
-  notas.push (inputNotas)
-  console.log(notas)
-  if (inputNotas > 10 || inputNotas < 0){
-    alert ("Nota inválida!! Digite um valor de 0 à 10")
-  }
   document.getElementById("notas").value = ""
-  texto.innerHTML = ""
-  texto.innerHTML += "As notas digitadas foram: " + notas + ", " + "<br>" + "<br>"
+  if (inputNotas > 10 || inputNotas < 0){
+    return alert ("Nota inválida!! Digite um valor de 0 à 10")
+  } 
+  if (isNaN(inputNotas)) { 
+    return alert ("Por favor, insira um número!")
+  }
+  notas.push (inputNotas)
+  texto.innerHTML = "As notas digitadas foram: " + notas.join(", ") + "<br><br>"
 }
 
 function calcularMedia() {
