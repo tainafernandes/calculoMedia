@@ -8,15 +8,17 @@ function adicionarNota () {
     alert ("Nota inválida!! Digite um valor de 0 à 10")
   }
   document.getElementById("notas").value = ""
+  texto.innerHTML = ""
+  texto.innerHTML += "As notas digitadas foram: " + notas + ", " + "<br>" + "<br>"
 }
 
 function calcularMedia() {
   var texto = document.getElementById("texto")
-  texto.innerHTML = ""
+
   var soma = notas.reduce(function(soma, i){
     return soma + i
   })
-  var media = soma / 4
+  var media = soma / notas.length
   var mediaFixada = media.toFixed(1)
 
   texto.innerHTML += "Caro aluno, sua média foi: " + mediaFixada + "<br>"   
@@ -26,14 +28,6 @@ function calcularMedia() {
   } else if (notaFixada < 5) {
     texto.innetHTML += "Sinto muito, mas você foi Reprovado!" + "<br>"
   }
-  
+  notas.splice(0, notas.length)
 }
 
-
-
-
-
-
-// array vazio
-// ao clicar no adicionar nota vai add no array
-//criar outro botão para cálculo de média
