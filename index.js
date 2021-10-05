@@ -1,12 +1,12 @@
 const notas = []
 
 function adicionarNota () {
-  var inputNotas = parseInt(document.getElementById("notas").value)
+  var inputNotas = Number(document.getElementById("notas").value)
   document.getElementById("notas").value = ""
   if (inputNotas > 10 || inputNotas < 0){
     return alert ("Nota inválida!! Digite um valor de 0 à 10")
   } 
-  if (isNaN(inputNotas)) { 
+  if (inputNotas === "") { 
     return alert ("Por favor, insira um número!")
   }
   notas.push (inputNotas)
@@ -20,13 +20,13 @@ function calcularMedia() {
     return soma + i
   })
   var media = soma / notas.length
-  var mediaFixada = media.toFixed(1)
+  var mediaFixada = media.toFixed(2)
 
   texto.innerHTML += "Caro aluno, sua média foi: " + mediaFixada + "<br>"   
 
   if (mediaFixada >= 5) {
     texto.innerHTML += "Parabéns!! Você foi aprovado!!!" + "<br>"
-  } else if (notaFixada < 5) {
+  } else if (mediaFixada < 5) {
     texto.innetHTML += "Sinto muito, mas você foi Reprovado!" + "<br>"
   }
   notas.splice(0, notas.length)
